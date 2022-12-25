@@ -9,16 +9,16 @@ const Home = () => {
   const [trendMovie, setTrendMovie] = useState([]);
 
   useEffect(() => {
-    trendingMovies().then(films => {
-      setTrendMovie(films);
+    trendingMovies().then(items => {
+      setTrendMovie(items);
     });
   }, []);
 
   return (
     <section>
-      <container>
+      <div>
         <MoviesList movies={trendMovie} sectionTitle="Trend Movies" />
-      </container>
+      </div>
     </section>
   );
 };

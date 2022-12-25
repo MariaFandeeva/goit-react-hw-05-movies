@@ -15,9 +15,9 @@ const Movies = () => {
   useEffect(() => {
     const params = searchParams.get('query') ?? '';
     if (params?.trim()) {
-      searchMovieByQuery(params).then(films => {
-        if (films.length !== 0) {
-          setSearchMovies(films);
+      searchMovieByQuery(params).then(items => {
+        if (items.length !== 0) {
+          setSearchMovies(items);
         } else {
           alert('no movies found');
         }
@@ -31,11 +31,11 @@ const Movies = () => {
 
   return (
     <section>
-      <container>
+      <div>
         {/* <h1>Movies</h1> */}
         <SearchBar onSubmit={onSubmitHandler} />
         {searchMovies.length > 0 && <MoviesList movies={searchMovies} />}
-      </container>
+      </div>
     </section>
   );
 };

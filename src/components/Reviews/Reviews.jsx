@@ -6,13 +6,13 @@ import { fetchMovieReviews } from 'services/api';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const { id } = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    fetchMovieReviews(id).then(items => {
+    fetchMovieReviews(movieId).then(items => {
       setReviews(items.results);
     });
-  }, [id]);
+  }, [movieId]);
 
   const rews = reviews.map(({ id, author, content }) => (
     <li key={id}>

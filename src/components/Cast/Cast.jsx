@@ -14,13 +14,13 @@ import { fetchMovieCast } from 'services/api';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
-  const { id } = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    fetchMovieCast(id).then(items => {
+    fetchMovieCast(movieId).then(items => {
       setCast(items.cast);
     });
-  }, [id]);
+  }, [movieId]);
 
   const baseImgUrl = 'https://image.tmdb.org/t/p/w185';
   const defaultImg = '/public/images/film_poster_not_found.jpg';

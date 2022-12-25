@@ -1,5 +1,5 @@
-// import { Navigation } from 'components/Navigation/Navigation';
-import { Outlet, Link, NavLink } from 'react-router-dom';
+import { Navigation } from 'components/Navigation/Navigation';
+import { Outlet, Link } from 'react-router-dom';
 import { Suspense } from 'react';
 import Loader from 'components/Loader/Loader.jsx';
 
@@ -21,13 +21,15 @@ const Layout = () => {
           <Link to="/">
             <p>Movies</p>
           </Link>
-          <nav>
+          {/* <nav>
             <ul>
               <NavLink to="/">Home</NavLink>
               <NavLink to="/movies">Movies</NavLink>
             </ul>
           </nav>
+        // </div> */}
         </div>
+        <Navigation />
       </header>
       <main>
         <Suspense fallback={<Loader />}>

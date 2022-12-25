@@ -2,11 +2,21 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 import Layout from './Layout/Layout.jsx';
 
-const Home = lazy(() => import('../pages/Home/Home'));
-const Movies = lazy(() => import('../pages/Movies/Movies'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
-const Cast = lazy(() => import('./Cast/Cast'));
-const Reviews = lazy(() => import('./Reviews/Reviews'));
+const Home = lazy(() =>
+  import('../pages/Home/Home' /* webpackChunkName: "home" */)
+);
+const Movies = lazy(() =>
+  import('../pages/Movies/Movies' /* webpackChunkName: "movies" */)
+);
+const MovieDetails = lazy(() =>
+  import(
+    '../pages/MovieDetails/MovieDetails' /* webpackChunkName: "movie-details" */
+  )
+);
+const Cast = lazy(() => import('./Cast/Cast' /* webpackChunkName: "cast" */));
+const Reviews = lazy(() =>
+  import('./Reviews/Reviews' /* webpackChunkName: "reviews-subpage" */)
+);
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 
 const App = () => {
@@ -19,7 +29,7 @@ const App = () => {
           <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
-            <Route path="*" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>

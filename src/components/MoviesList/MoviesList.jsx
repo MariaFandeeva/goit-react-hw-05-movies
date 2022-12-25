@@ -22,7 +22,7 @@ const MoviesList = ({ movies, sectionTitle = null }) => {
         {movies.map(({ id, title, poster_path }) => {
           return (
             <li key={id}>
-              <Link state={{ from: location }} to={`{movies.id}`}>
+              <Link state={{ from: location }} to={`/movies/${id}`}>
                 <img
                   src={poster_path ? `${baseImgUrl}${poster_path}` : defaultImg}
                   alt={title}

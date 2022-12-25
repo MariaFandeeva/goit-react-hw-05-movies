@@ -31,17 +31,16 @@ const items = [
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { movieId } = useParams();
   const location = useLocation();
 
-  const from = location.state?.form ?? '/';
-  // const defaultPoster = '/public/images/film_poster_not_found.jpg';
+  const from = location.state?.from ?? '/';
 
   useEffect(() => {
-    fetchMovieById(id).then(items => {
+    fetchMovieById(movieId).then(items => {
       setMovie(items);
     });
-  }, [id]);
+  }, [movieId]);
 
   // let genresArray = [];
   // if (movie) {
@@ -50,7 +49,7 @@ const MovieDetails = () => {
 
   const goBack = () => navigate(from);
 
-  const { overview, title, genres = [], vote_avarage, poster_path } = movie;
+  const { overview, title, genres = [], vote_average, poster_path } = movie;
 
   const genreFilter = genres.map(genre => genre.name).join(' ');
   const baseImgUrl = 'https://image.tmdb.org/t/p/w500/';
@@ -111,9 +110,7 @@ const MovieDetails = () => {
         {<button onClick={goBack}>Go back</button>}
         <div className="movieItem">
           <img
-            src={
-              poster_path ? `h${baseImgUrl}${movie.poster_path}` : defaultImg
-            }
+            src={poster_path ? `${baseImgUrl}${movie.poster_path}` : defaultImg}
             alt={title}
             width="300"
           />
@@ -121,7 +118,7 @@ const MovieDetails = () => {
             <h3>{title}</h3>
             <p className="text">
               <b>Rating:</b>
-              {vote_avarage}
+              {vote_average}
             </p>
             <p className="text">
               <b>Overview:</b>
