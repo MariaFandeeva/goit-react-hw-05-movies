@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Notify } from 'notiflix';
 import PropTypes from 'prop-types';
 
-import { Form, Input, Button } from './SearchBar.styled';
+// import { Form, Input, Button } from './SearchBar.styled.jsx';
 
-export const SearchBar = ({ onsubmit }) => {
+const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
   const changeHandler = event => {
@@ -24,25 +24,26 @@ export const SearchBar = ({ onsubmit }) => {
         },
       });
     }
-    onsubmit(query);
+    onSubmit(query);
     setQuery('');
   };
 
   return (
     <>
-      <Form onSubmit={submitHandler}>
-        <Input
+      <form onSubmit={submitHandler}>
+        <input
           onChange={changeHandler}
           type="text"
           name="query"
           value={query}
           autoComplete="off"
         />
-        <Button type="submit">Search</Button>
-      </Form>
+        <button type="submit">Search</button>
+      </form>
     </>
   );
 };
+export default SearchBar;
 
 SearchBar.propTypes = {
   onSubmit: PropTypes.func.isRequired,

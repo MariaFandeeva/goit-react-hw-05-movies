@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
 import { trendingMovies } from 'services/api';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 
-import { Section, Container } from './Home.styled.jsx';
+// import { Section, Container } from './Home.styled.jsx';
 
-export const Home = () => {
+const Home = () => {
   const [trendMovie, setTrendMovie] = useState([]);
 
   useEffect(() => {
@@ -15,10 +15,11 @@ export const Home = () => {
   }, []);
 
   return (
-    <Section>
-      <Container>
+    <section>
+      <container>
         <MoviesList movies={trendMovie} sectionTitle="Trend Movies" />
-      </Container>
-    </Section>
+      </container>
+    </section>
   );
 };
+export default Home;

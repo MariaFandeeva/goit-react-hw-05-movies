@@ -1,16 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import Layout from './Layout/Layout.jsx';
 
-import { Layout } from './Layout/Layout';
+const Home = lazy(() => import('../pages/Home/Home'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 
-// import { Navigation } from './Navigation/Navigation';
-import { Home } from 'pages/Home/Home';
-import { Movies } from 'pages/Movies/Movies';
-import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
-import { NotFound } from 'pages/NotFound/NotFound';
-
-export const App = () => {
+const App = () => {
   return (
     <>
       <Routes>
@@ -28,3 +27,4 @@ export const App = () => {
     </>
   );
 };
+export default App;

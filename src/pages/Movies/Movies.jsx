@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovieByQuery } from '../../services/api';
 
-import { SearchBar } from '../../components/SearchBar/SearchBar';
-import { MoviesList } from '../../components/MoviesList/MoviesList';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import MoviesList from '../../components/MoviesList/MoviesList';
 
-export const Movies = () => {
-  const [movies, setMovies] = useState([]);
+// import { Section, Container } from './Movies.styled.jsx';
+
+const Movies = () => {
+  const [searchMovies, setSearchMovies] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -15,7 +17,7 @@ export const Movies = () => {
     if (params?.trim()) {
       searchMovieByQuery(params).then(films => {
         if (films.length !== 0) {
-          setMovies(films);
+          setSearchMovies(films);
         } else {
           alert('no movies found');
         }
@@ -23,18 +25,18 @@ export const Movies = () => {
     }
   }, [searchParams]);
 
-  const onSubmit = event => {
-    event.preventDefault();
-    const value = event.currentTarget.elements.inputValue.value;
-
-    setSearchParams(value !== '' ? { query: value } : {});
+  const onSubmitHandler = q => {
+    setSearchParams({ query: q });
   };
 
   return (
-    <>
-      <h1>Movies</h1>
-      <SearchBar formSubmitHandler={onSubmit} />
-      <MoviesList movies={movies} />
-    </>
+    <section>
+      <container>
+        {/* <h1>Movies</h1> */}
+        <SearchBar onSubmit={onSubmitHandler} />
+        {searchMovies.length > 0 && <MoviesList movies={searchMovies} />}
+      </container>
+    </section>
   );
 };
+export default Movies;
