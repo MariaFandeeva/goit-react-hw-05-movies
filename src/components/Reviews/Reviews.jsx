@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieReviews } from 'services/api';
 
-// import { RevList, RevItem, RevText, RevError } from './Reviews.styled.jsx';
+import { RevList, RevItem, RevText, RevError } from './Reviews.styled.jsx';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -15,18 +15,18 @@ const Reviews = () => {
   }, [movieId]);
 
   const rews = reviews.map(({ id, author, content }) => (
-    <li key={id}>
-      <p>
+    <RevItem key={id}>
+      <RevText>
         <b>Author:</b>
         {author}
-      </p>
+      </RevText>
       {content}
-    </li>
+    </RevItem>
   ));
   return reviews.length > 0 ? (
-    <ul> {rews}</ul>
+    <RevList> {rews}</RevList>
   ) : (
-    <h3>There are no reviews for this movie</h3>
+    <RevError>There are no reviews for this movie</RevError>
   );
 };
 export default Reviews;

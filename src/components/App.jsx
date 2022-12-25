@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 import Layout from './Layout/Layout.jsx';
+import { GlobalStyles } from '../utils/GlobalStyles';
 
 const Home = lazy(() =>
   import('../pages/Home/Home' /* webpackChunkName: "home" */)
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <GlobalStyles />
     </>
   );
 };

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Notify } from 'notiflix';
 import PropTypes from 'prop-types';
+import { FiSearch } from 'react-icons/fi';
 
-// import { Form, Input, Button } from './SearchBar.styled.jsx';
+import { Form, Input, Button } from './SearchBar.styled.jsx';
 
 const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
@@ -30,16 +31,20 @@ const SearchBar = ({ onSubmit }) => {
 
   return (
     <>
-      <form onSubmit={submitHandler}>
-        <input
+      <Form onSubmit={submitHandler}>
+        <Input
           onChange={changeHandler}
           type="text"
           name="query"
           value={query}
           autoComplete="off"
         />
-        <button type="submit">Search</button>
-      </form>
+        <Button type="submit">
+          <span>
+            <FiSearch size={25} />
+          </span>
+        </Button>
+      </Form>
     </>
   );
 };

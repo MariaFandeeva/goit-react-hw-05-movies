@@ -6,8 +6,8 @@ const Loader = () => {
   return (
     <LoaderOverlay>
       <Spinner
-        height="200"
-        width="200"
+        height="100"
+        width="100"
         radius="9"
         color="#ff0000"
         ariaLabel="circles-loading"

@@ -1,26 +1,26 @@
 import { Navigation } from 'components/Navigation/Navigation';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Loader from 'components/Loader/Loader.jsx';
 
-// import {
-//   Header,
-//   Container,
-//   LogoLink,
-//   // Logo,
-//   SiteName,
-//   NavList,
-//   StyledLink,
-// } from './Layout.styled.jsx';
+import {
+  Header,
+  Container,
+  LogoLink,
+  SiteName,
+  Footer,
+  FooterText,
+  MyLink,
+} from './Layout.styled.jsx';
 
 const Layout = () => {
   return (
     <>
-      <header>
-        <div>
-          <Link to="/">
-            <p>Movies</p>
-          </Link>
+      <Header>
+        <Container>
+          <LogoLink to="/">
+            <SiteName>Movies</SiteName>
+          </LogoLink>
           {/* <nav>
             <ul>
               <NavLink to="/">Home</NavLink>
@@ -28,17 +28,23 @@ const Layout = () => {
             </ul>
           </nav>
         // </div> */}
-        </div>
+        </Container>
         <Navigation />
-      </header>
+      </Header>
       <main>
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
-      <footer>
-        <p>Made by GOit student Maria Fandeeva 2022</p>
-      </footer>
+      <Footer>
+        <FooterText>
+          Made by GOit student
+          <MyLink to="https://www.linkedin.com/in/maria-fandeeva-47530a25a/">
+            Maria Fandeeva
+          </MyLink>
+          2022
+        </FooterText>
+      </Footer>
     </>
   );
 };

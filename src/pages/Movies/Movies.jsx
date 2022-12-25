@@ -5,7 +5,7 @@ import { searchMovieByQuery } from '../../services/api';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import MoviesList from '../../components/MoviesList/MoviesList';
 
-// import { Section, Container } from './Movies.styled.jsx';
+import { Section, Container } from './Movies.styled.jsx';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
@@ -30,13 +30,13 @@ const Movies = () => {
   };
 
   return (
-    <section>
-      <div>
+    <Section>
+      <Container>
         {/* <h1>Movies</h1> */}
         <SearchBar onSubmit={onSubmitHandler} />
         {searchMovies.length > 0 && <MoviesList movies={searchMovies} />}
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 export default Movies;

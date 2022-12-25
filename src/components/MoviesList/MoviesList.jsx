@@ -1,38 +1,38 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-// import {
-//   List,
-//   Item,
-//   SectionTitle,
-//   LinkTitle,
-//   Img,
-//   MovieTitle,
-// } from './MoviesList.styled';
+import {
+  List,
+  Item,
+  SectionTitle,
+  LinkTitle,
+  Img,
+  MovieTitle,
+} from './MoviesList.styled';
 
 const MoviesList = ({ movies, sectionTitle = null }) => {
   const location = useLocation();
   const baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
-  const defaultImg = '/public/images/film_poster_not_found.jpg';
+  const defaultImg = 'https://i.ibb.co/nw331jk/1.jpg';
 
   return (
     <>
-      {sectionTitle && <h3>{sectionTitle}</h3>}
-      <ul>
+      {sectionTitle && <SectionTitle>{sectionTitle}</SectionTitle>}
+      <List>
         {movies.map(({ id, title, poster_path }) => {
           return (
-            <li key={id}>
-              <Link state={{ from: location }} to={`/movies/${id}`}>
-                <img
+            <Item key={id}>
+              <LinkTitle state={{ from: location }} to={`/movies/${id}`}>
+                <Img
                   src={poster_path ? `${baseImgUrl}${poster_path}` : defaultImg}
                   alt={title}
                 />
-                <p>{title}</p>
-              </Link>
-            </li>
+                <MovieTitle>{title}</MovieTitle>
+              </LinkTitle>
+            </Item>
           );
         })}
-      </ul>
+      </List>
     </>
   );
 };

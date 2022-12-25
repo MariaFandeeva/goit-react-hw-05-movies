@@ -1,27 +1,21 @@
 import { useState, useEffect } from 'react';
-import {
-  useNavigate,
-  useLocation,
-  useParams,
-  Outlet,
-  Link,
-} from 'react-router-dom';
+import { useNavigate, useLocation, useParams, Outlet } from 'react-router-dom';
 import { fetchMovieById } from 'services/api';
 
-// import {
-//   Section,
-//   Container,
-//   Button,
-//   MovieItem,
-//   MovieImg,
-//   MovieDescription,
-//   MovieTitle,
-//   MovieText,
-//   MoreDetails,
-//   MoreDetailsList,
-//   MoreDetailsButton,
-//   MoreDetailsItem,
-// } from './MovieDetails.styled.jsx';
+import {
+  Section,
+  Container,
+  Button,
+  MovieItem,
+  MovieImg,
+  MovieDescription,
+  MovieTitle,
+  MovieText,
+  MoreDetails,
+  MoreDetailsList,
+  MoreDetailsButton,
+  MoreDetailsItem,
+} from './MovieDetails.styled.jsx';
 
 const items = [
   { text: 'Cast', href: 'cast' },
@@ -42,11 +36,6 @@ const MovieDetails = () => {
     });
   }, [movieId]);
 
-  // let genresArray = [];
-  // if (movie) {
-  //   genresArray = movie.genres.map(item => item.name);
-  // }
-
   const goBack = () => navigate(from);
 
   const { overview, title, genres = [], vote_average, poster_path } = movie;
@@ -56,97 +45,48 @@ const MovieDetails = () => {
   const defaultImg = '/public/images/film_poster_not_found.jpg';
 
   return (
-    // <>
-    /* <Link to={from}>Go Back</Link>
-    {movie && (
-      <div>
-        <div>
-          <img
-            src={
-              movie.poster_path
-                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                : defaultPoster
-            }
-            alt={movie.original_title}
-            width="250"
-          />
-        </div>
-        <div>
-          <h3>
-            {movie.original_title}({movie.release_date})
-          </h3>
-          <p>
-            <b>Vote avarage:</b>
-            {movie.vote_avarage}
-          </p>
-          <p>
-            <b>Overview:</b>
-            {movie.overview}
-          </p>
-          <p>
-            <b>Genres:</b>
-            {genresArray.join(',')}
-          </p>
-        </div>
-
-        <h4>Additional information</h4>
-        <ul>
-          <Link to="cast" state={{ from: location.state.from }}>
-            Cast
-          </Link>
-          <Link to="reviews" state={{ from: location.state.from }}>
-            Reviews
-          </Link>
-        </ul>
-        <Outlet />
-      </div>
-    )}
-  </>
-);
-}; */
-
-    <section>
-      <div>
-        {<button onClick={goBack}>Go back</button>}
-        <div className="movieItem">
-          <img
+    <Section>
+      <Container>
+        {<Button onClick={goBack}>Go back</Button>}
+        <MovieItem>
+          <MovieImg
             src={poster_path ? `${baseImgUrl}${movie.poster_path}` : defaultImg}
             alt={title}
-            width="300"
+            // width="300"
           />
-          <div className="MovieDescription">
-            <h3>{title}</h3>
-            <p className="text">
+          <MovieDescription>
+            <MovieTitle>{title}</MovieTitle>
+            <MovieText>
               <b>Rating:</b>
               {vote_average}
-            </p>
-            <p className="text">
+            </MovieText>
+            <MovieText>
               <b>Overview:</b>
               {overview}
-            </p>
-            <p className="text">
+            </MovieText>
+            <MovieText>
               <b>Genres:</b>
               {genreFilter}
-            </p>
-            <div className="moreDetails">
-              <p className="text">
+            </MovieText>
+            <MoreDetails>
+              <MovieText>
                 <b>Additional Information</b>
-              </p>
-              <ul>
+              </MovieText>
+              <MoreDetailsList>
                 {items.map(({ text, href }) => (
-                  <li key={text}>
-                    <Link state={{ from }} to={href}>
+                  <MoreDetailsItem key={text}>
+                    <MoreDetailsButton state={{ from }} to={href}>
                       {text}
-                    </Link>
-                  </li>
+                    </MoreDetailsButton>
+                  </MoreDetailsItem>
                 ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+              </MoreDetailsList>
+            </MoreDetails>
+          </MovieDescription>
+        </MovieItem>
         <Outlet />
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 export default MovieDetails;
