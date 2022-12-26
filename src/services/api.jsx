@@ -10,11 +10,11 @@ export const trendingMovies = async () => {
   return results;
 };
 
-export const searchMovieByQuery = async query => {
-  const {
-    data: { results },
-  } = await axios.get(`/search/movie?api_key=${API_KEY}&query=${query}&page=1`);
-  return results;
+export const searchMovieByQuery = async (query, page = 1) => {
+  const { data } = await axios.get(
+    `/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`
+  );
+  return data;
 };
 
 export const fetchMovieById = async id => {

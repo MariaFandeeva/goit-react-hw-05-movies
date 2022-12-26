@@ -12,7 +12,6 @@ export const StyledLink = styled(NavLink)`
   text-decoration: none;
   border-radius: 5px;
   border: none;
-
   /* &:not(: last-of-type) { */
   margin-right: 10px;
   /* } */

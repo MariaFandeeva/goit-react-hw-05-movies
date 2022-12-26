@@ -28,7 +28,14 @@ body {
     color: #fff;
    display: flex;
    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+   padding-bottom: 50px;
+
 }
 
-
+#root {
+  height: calc(100vh-34px);
+}
 `;

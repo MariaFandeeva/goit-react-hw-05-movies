@@ -22,10 +22,11 @@ export const LogoLink = styled(Link)`
 
 export const SiteName = styled.p`
   margin-left: 10px;
-  color: #ff0000;
+  color: #eddcdc;
   font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;
+  margin-left: 50px;
 `;
 
 export const NavList = styled.nav`
@@ -64,6 +65,11 @@ export const StyledLink = styled(NavLink)`
 export const Footer = styled.footer`
   width: 100%;
   margin-top: auto;
+  height: 50px;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  background-color: #1d1d1d;
 
   &::before {
     content: '';
@@ -75,14 +81,18 @@ export const Footer = styled.footer`
 `;
 
 export const FooterText = styled.p`
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
   font-size: 16px;
 `;
-export const MyLink = styled(Link)`
+export const MyLink = styled.a`
   /* text-decoration: none; */
   color: inherit;
   margin-left: 3px;
   margin-right: 3px;
+`;
+export const Logo = styled.span`
+  width: 10px;
+  height: 10px;
 `;
