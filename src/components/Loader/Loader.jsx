@@ -6,10 +6,10 @@ const Loader = () => {
   return (
     <LoaderOverlay>
       <Spinner
-        height="100"
-        width="100"
+        height="70"
+        width="70"
         radius="9"
-        color="#ff0000"
+        color="#fff"
         ariaLabel="circles-loading"
         wrapperStyle={{}}
         wrapperClassName=""
