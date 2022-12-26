@@ -42,8 +42,8 @@ const Movies = () => {
 
   const onSubmitHandler = q => {
     setSearchParams({ query: q });
-    // setPage(1);
-    // setSearchMovies([]);
+    setPage(1);
+    setSearchMovies([]);
   };
   const onLoadMore = () => {
     setPage(page + 1);
